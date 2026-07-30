@@ -1,0 +1,63 @@
+# Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.12.1
+psycopg2-binary==2.9.9
+asyncpg==0.29.0
+aiosqlite==0.19.0
+
+# Auth
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+email-validator==2.1.0
+
+# LangChain
+langchain==0.1.0
+langchain-openai==0.0.3
+langchain-community==0.0.10
+openai==1.6.1
+tiktoken==0.5.2
+ollama==0.1.7
+
+# Vector DB
+chromadb==0.4.18
+
+# PDF Processing
+pypdf==3.17.1
+pdfplumber==0.10.3
+
+# AWS S3 (optional)
+boto3==1.34.0
+botocore==1.34.0
+
+# ML / NLP
+transformers==4.36.2
+sentence-transformers==2.3.1
+scikit-learn==1.4.0
+numpy==1.26.3
+torch==2.1.2
+
+# LLMOps
+prometheus-client==0.19.0
+opentelemetry-api==1.21.0
+opentelemetry-sdk==1.21.0
+
+# Utilities
+pydantic==2.5.2
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+aiofiles==23.2.1
+httpx==0.25.2
+tenacity==8.2.3
+structlog==23.2.0
+rich==13.7.0
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.23.2
+httpx==0.25.2
