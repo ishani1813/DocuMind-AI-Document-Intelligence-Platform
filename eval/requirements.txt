@@ -1,0 +1,5 @@
+requests>=2.31
+
+# Only needed for the arm you pick with --judge-provider:
+openai>=1.0     # --judge-provider openai (default)
+ollama>=0.1     # --judge-provider ollama
