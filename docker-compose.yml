@@ -56,6 +56,13 @@ services:
       - uploaded_files:/app/uploads
     ports:
       - "8000:8000"
+    # host.docker.internal resolves automatically on Docker Desktop (Mac/
+    # Windows), but NOT on native Linux Docker -- without this, USE_OLLAMA=true
+    # fails every embedding/chat call with a DNS resolution error, silently
+    # leaving uploaded documents stuck in "pending" forever. This line makes
+    # the same hostname work identically on Linux.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
   # ── React Frontend ──────────────────────────────────────────

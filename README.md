@@ -8,6 +8,21 @@ A production-ready, full-stack **Retrieval-Augmented Generation (RAG)** platform
 
 ---
 
+## Screenshots
+
+<table>
+<tr>
+<td><img src="screenshots/register.png" alt="Sign up" width="400"/></td>
+<td><img src="screenshots/dashboard.png" alt="Dashboard" width="400"/></td>
+</tr>
+<tr>
+<td><img src="screenshots/ml-insights.png" alt="ML Insights — classification, summarization, NER, sentiment" width="400"/></td>
+<td><img src="screenshots/workspaces.png" alt="Multi-tenant workspaces" width="400"/></td>
+</tr>
+</table>
+
+---
+
 ## Features
 
 - **PDF Upload & Processing** — Drag-and-drop PDF ingestion with chunking, embedding, and S3 storage
