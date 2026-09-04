@@ -2,9 +2,9 @@
 
 > Upload documents. Ask questions. Get cited answers.
 
-A production-ready, full-stack **Retrieval-Augmented Generation (RAG)** platform built with React, FastAPI, LangChain, ChromaDB, PostgreSQL, and AWS S3 — supporting multi-user workspaces, semantic search, conversational AI, and full source citations.
+A production-ready, full-stack **Retrieval-Augmented Generation (RAG)** platform built with React, FastAPI, LangChain, ChromaDB, and PostgreSQL — supporting multi-user workspaces, semantic search, conversational AI, and full source citations. Runs entirely free and local (Ollama + local disk), with OpenAI and AWS S3 as optional upgrades.
 
-![Tech Stack](https://img.shields.io/badge/React-18-61DAFB?logo=react) ![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688?logo=fastapi) ![LangChain](https://img.shields.io/badge/LangChain-0.1-1C3C3C) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?logo=postgresql) ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker) ![AWS S3](https://img.shields.io/badge/AWS-S3-FF9900?logo=amazonaws)
+![CI](https://github.com/ishani1813/DocuMind-AI-Document-Intelligence-Platform/actions/workflows/ci.yml/badge.svg) ![Tech Stack](https://img.shields.io/badge/React-18-61DAFB?logo=react) ![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688?logo=fastapi) ![LangChain](https://img.shields.io/badge/LangChain-0.1-1C3C3C) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?logo=postgresql) ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker)
 
 ---
 
@@ -72,25 +72,37 @@ A production-ready, full-stack **Retrieval-Augmented Generation (RAG)** platform
 
 ## Quick Start
 
-### Prerequisites
-- Docker & Docker Compose
-- OpenAI API Key
-- AWS S3 Bucket + IAM credentials
+**No paid API keys or cloud account required to run this.** The app already
+supports a fully free, local path — Ollama instead of OpenAI, local disk
+instead of S3 — both are real fallbacks in the code (`storage_service.py`,
+`rag_service.py`), not placeholders. OpenAI + S3 are an optional upgrade for
+a more production-like setup, not a prerequisite.
 
-### 1. Clone & Configure
+### Option A — Free & local (recommended for trying it out)
 
 ```bash
-git clone https://github.com/yourusername/rag-document-platform.git
-cd rag-document-platform
+git clone https://github.com/ishani1813/DocuMind-AI-Document-Intelligence-Platform.git
+cd DocuMind-AI-Document-Intelligence-Platform
 cp .env.example .env
-# Edit .env with your credentials
 ```
 
-### 2. Launch with Docker Compose
+Then in `.env`, set `USE_OLLAMA=true` (S3 already defaults to off — uploads
+land on local disk automatically). Install [Ollama](https://ollama.com) and
+pull a model:
+
+```bash
+ollama pull mistral
+ollama pull nomic-embed-text
+```
 
 ```bash
 docker-compose up --build
 ```
+
+### Option B — OpenAI + S3 (closer to a production setup)
+
+Same steps, but fill in `OPENAI_API_KEY` and the `AWS_*` / `S3_*` variables
+in `.env`, and set `USE_S3=true`.
 
 ### 3. Access the App
 
@@ -233,4 +245,4 @@ JWT_SECRET_KEY=your-secret-key
 
 ## License
 
-MIT — free to use in your portfolio.
+MIT

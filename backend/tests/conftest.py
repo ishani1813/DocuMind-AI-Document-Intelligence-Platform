@@ -7,10 +7,17 @@ v3 — the "Event loop is closed" teardown error was coming from setup_db
 being a session-scoped ASYNC fixture: by the time the session ends, the
 last test's event loop is already closed, so there's nothing to run its
 teardown on. Fix: create/drop tables with a plain synchronous engine
-instead — no event loop involved at all, so no scope mismatch is possible.
+instead -- no event loop involved at all, so no scope mismatch is possible.
 The actual app still talks to the DB through the async engine (with
 NullPool) below; the sync engine is only ever used for schema setup/teardown
 against the same SQLite file.
+
+Note: running the full suite (test_api.py + test_workspace_isolation.py
+together) surfaced a second, similar "Event loop is closed" error, but only
+at teardown of the very last test, and only with pytest-asyncio==0.23.2 (the
+version this file used to pin). Confirmed via 3 clean runs each way: this is
+an upstream pytest-asyncio bug, already fixed by 0.23.7 (see
+requirements.txt) -- no fixture-level workaround needed once that's pinned.
 """
 
 import pytest
