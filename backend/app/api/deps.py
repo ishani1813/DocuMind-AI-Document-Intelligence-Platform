@@ -1,13 +1,3 @@
-"""
-Shared dependencies for workspace-scoped resource access.
-
-Save this as: backend/app/api/deps.py
-
-This is the piece that was missing: workspace_id was accepted from the
-client and stored on Document, but nothing ever checked that the current
-user was actually a member of that workspace before reading/writing to it.
-"""
-
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
